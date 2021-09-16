@@ -1,19 +1,32 @@
-export const getTasks = () => _get("/api/tasks");
+// export const getTasks = async () => {
+//   const response = await fetch("/api/tasks");
+//   return response.json();
+// };
 
-export const addTask = (name) => _post("/api/tasks", { name });
+// export const addTask = async (name) => {
+//   const response = await fetch("/api/tasks", {
+//     method: "POST",
+//     headers: {
+//       "Content-Type": "application/json",
+//     },
+//     body: JSON.stringify({ name }),
+//   });
+//   return response.json();
+// };
 
-const _get = async (url) => (await fetch(url)).json();
+//sighting function
+export const getSightings = async () => {
+  const response = await fetch("/api/sightings");
+  return response.json();
+};
 
-const _post = async (url, body) => {
-  const response = await fetch(url, {
+export const addSighting = async (sighting) => {
+  const response = await fetch("/api/sightings", {
     method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(body),
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(sighting),
   });
-  let result;
-  try {
-    result = await response.json();
-  } catch {}
-
-  return result;
+  return response.json();
 };
