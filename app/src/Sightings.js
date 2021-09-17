@@ -37,8 +37,8 @@ const Sightings = () => {
 
 const SightingsList = ({ sightings }) => (
   <>
-    <h1>Endangered Animal Sightings</h1>
-    <table>
+    <h2 id="endangeredAnimals">Endangered Animal Sightings</h2>
+    <table className="center">
       <thead>
         <tr>
           <th>Id</th>
@@ -75,7 +75,6 @@ const SightingsList = ({ sightings }) => (
         )}
       </tbody>
     </table>
-    {/* </ul> */}
   </>
 );
 
@@ -116,9 +115,14 @@ const AddSightings = ({ addSighting }) => {
 
   // console.log(sighting, location, healthy, email, individualId);
   return (
-    <div>
-      <h3>Add New Sightings </h3>
-      <form onSubmit={onSubmit}>
+    <div className="formCard">
+      <form className="center" onSubmit={onSubmit}>
+        <h4>Add New Sightings</h4>
+        <p>
+          As scientists, when you can spot an endangered animal, use this form
+          to track and store some information about the sighting into your
+          database:
+        </p>
         <div>
           <label htmlFor="individual_id">Individual Id: </label>
           <input
@@ -192,7 +196,9 @@ const AddSightings = ({ addSighting }) => {
           value={sighting}
         />
       </label> */}
-        <button disabled={!canAdd}>Add</button>
+        <div className="formBtn">
+          <button disabled={!canAdd}>Add</button>
+        </div>
       </form>
     </div>
   );
