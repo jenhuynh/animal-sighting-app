@@ -37,7 +37,7 @@ const Footer = () => (
       </div>
       <div class="column">
         <img
-          src="https://lh3.googleusercontent.com/proxy/r3h6F7PUtk5OocTMBIWH-7aKoAz2_aCJkAuHpWeG1WqX-959ODkeHq9hfCg5YSg6NW7iwvvLFXS0Ep1mUeaQ8fvYMxMBkmyZYbB_kdBdyFxhEnXSo-VrD7OSS82If14"
+          src="https://faunalytics.org/wp-content/uploads/2017/02/3590199054_9d9900dc21_z.jpg"
           alt="Indus River Dolphin"
           width="300"
           height="200"
