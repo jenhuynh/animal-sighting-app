@@ -1,0 +1,29 @@
+body {
+  margin: 20px;
+  background-color: #faebe0;
+  font-family: "Lora", serif;
+}
+table td,
+th {
+  border: 1px solid #ddd;
+  padding: 5px;
+}
+input {
+  border: 1px solid #ddd;
+  padding: 2px;
+}
+div form {
+  padding: 5px;
+}
+form {
+  border: 2px solid #b5cda3;
+  background-color: #b5cda3;
+  width: 30%;
+  padding: 10px;
+}
+th {
+  background-color: #b5cda3;
+}
+td {
+  background-color: #c1ac95;
+}
