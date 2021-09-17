@@ -4,7 +4,7 @@ import { Routes, Route, Link } from "react-router-dom";
 
 import Sightings from "./Sightings";
 
-// import Tasks from "./Tasks";
+import "./App.css";
 
 const App = () => (
   <main>
