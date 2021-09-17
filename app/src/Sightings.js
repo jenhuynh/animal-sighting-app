@@ -38,25 +38,44 @@ const Sightings = () => {
 const SightingsList = ({ sightings }) => (
   <>
     <h1>Endangered Animal Sightings</h1>
-    <ul>
-      {sightings.map(
-        ({
-          id,
-          individual_id,
-          nickname,
-          healthy,
-          location,
-          date,
-          time,
-          email,
-        }) => (
-          <li key={id}>
-            {individual_id}, {nickname}, {location}, {healthy.toString()},{" "}
-            {email}, {date}, {time}
-          </li>
-        ),
-      )}
-    </ul>
+    <table>
+      <thead>
+        <tr>
+          <th>Id</th>
+          <th>Nickname</th>
+          <th>Location</th>
+          <th>Healthy</th>
+          <th>Email</th>
+          <th>Date</th>
+          <th>Time</th>
+        </tr>
+      </thead>
+      <tbody>
+        {sightings.map(
+          ({
+            id,
+            individual_id,
+            nickname,
+            healthy,
+            location,
+            date,
+            time,
+            email,
+          }) => (
+            <tr key={id}>
+              <td>{individual_id}</td>
+              <td>{nickname}</td>
+              <td>{location}</td>
+              <td>{healthy.toString()}</td>
+              <td>{email}</td>
+              <td>{date}</td>
+              <td>{time}</td>
+            </tr>
+          ),
+        )}
+      </tbody>
+    </table>
+    {/* </ul> */}
   </>
 );
 
@@ -81,9 +100,9 @@ const AddSightings = ({ addSighting }) => {
   const onSubmit = (e) => {
     e.preventDefault();
     const newSighting = {
+      individual_id: individualId,
       date: date,
       time: time,
-      individual_id: individualId,
       location: location,
       healthy: healthy,
       email: email,
@@ -97,82 +116,85 @@ const AddSightings = ({ addSighting }) => {
 
   // console.log(sighting, location, healthy, email, individualId);
   return (
-    <form onSubmit={onSubmit}>
-      <div>
-        <label htmlFor="date">Date</label>
-        <input
-          id="date"
-          type="date"
-          name="date"
-          placeholder="Enter date"
-          value={date}
-          onChange={(e) => setDate(e.target.value)}
-        />
-      </div>
-      <div>
-        <label htmlFor="time">Time</label>
-        <input
-          id="time"
-          type="time"
-          name="time"
-          placeholder="Enter time"
-          value={time}
-          onChange={(e) => setTime(e.target.value)}
-        />
-      </div>
-      <div>
-        <label htmlFor="individual_id">Individual Id:</label>
-        <input
-          id="individual_id"
-          type="integer"
-          name="individual_id"
-          placeholder="Enter Individual Id"
-          value={individualId}
-          onChange={(e) => setIndividualId(e.target.value)}
-        />
-      </div>
-      <div>
-        <label htmlFor="location">Location:</label>
-        <input
-          id="location"
-          type="text"
-          name="location"
-          placeholder="Enter animal location"
-          value={location}
-          onChange={(e) => setLocation(e.target.value)}
-        />
-      </div>
-      <div>
-        <label htmlFor="healthy">Healthy:</label>
-        <input
-          id="healthy"
-          type="text"
-          name="healthy"
-          placeholder="Enter True or False"
-          value={healthy}
-          onChange={(e) => setHealthy(e.target.value)}
-        />
-      </div>
-      <div>
-        <label htmlFor="email">Email:</label>
-        <input
-          id="email"
-          type="text"
-          name="email"
-          placeholder="Enter email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-        />
-      </div>
-      {/* <label>
+    <div>
+      <h3>Add New Sightings </h3>
+      <form onSubmit={onSubmit}>
+        <div>
+          <label htmlFor="individual_id">Individual Id: </label>
+          <input
+            id="individual_id"
+            type="integer"
+            name="individual_id"
+            placeholder="Enter Individual Id"
+            value={individualId}
+            onChange={(e) => setIndividualId(e.target.value)}
+          />
+        </div>
+        <div>
+          <label htmlFor="date">Date: </label>
+          <input
+            id="date"
+            type="date"
+            name="date"
+            placeholder="Enter date"
+            value={date}
+            onChange={(e) => setDate(e.target.value)}
+          />
+        </div>
+        <div>
+          <label htmlFor="time">Time: </label>
+          <input
+            id="time"
+            type="time"
+            name="time"
+            placeholder="Enter time"
+            value={time}
+            onChange={(e) => setTime(e.target.value)}
+          />
+        </div>
+        <div>
+          <label htmlFor="location">Location: </label>
+          <input
+            id="location"
+            type="text"
+            name="location"
+            placeholder="Enter animal location"
+            value={location}
+            onChange={(e) => setLocation(e.target.value)}
+          />
+        </div>
+        <div>
+          <label htmlFor="healthy">Healthy: </label>
+          <input
+            id="healthy"
+            type="text"
+            name="healthy"
+            placeholder="Enter True or False"
+            value={healthy}
+            onChange={(e) => setHealthy(e.target.value)}
+          />
+        </div>
+        <div>
+          <label htmlFor="email">Email: </label>
+          <input
+            id="email"
+            type="text"
+            name="email"
+            placeholder="Enter email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+          />
+        </div>
+        {/* <label>
         New Sightings:{" "}
         <input
           onChange={(e) => setSightings(e.currentTarget.value)}
           value={sighting}
         />
       </label> */}
-      <button disabled={!canAdd}>Add</button>
-    </form>
+        <button disabled={!canAdd}>Add</button>
+      </form>
+    </div>
   );
 };
 
