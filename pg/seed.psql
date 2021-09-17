@@ -156,10 +156,10 @@ COPY public.individuals (id, species_id, nickname, record_created) FROM stdin;
 4	1	Kaleb	2021-09-16 22:16:30.205739
 5	3	Maxime	2021-09-16 22:17:25.136141
 6	3	Sana	2021-09-16 22:18:32.278647
-7	4	Aneesha	2021-09-16 22:19:22.642915
 8	4	Dewey	2021-09-16 22:20:18.920952
 9	5	Marsha	2021-09-16 22:21:09.802499
 10	5	Alvin	2021-09-16 22:22:24.859619
+12	4	Aneesha	2021-09-17 01:55:21.426345
 \.
 
 
@@ -168,12 +168,11 @@ COPY public.individuals (id, species_id, nickname, record_created) FROM stdin;
 --
 
 COPY public.sightings (id, individual_id, location, healthy, email, record_created, date, "time") FROM stdin;
-2	1	Amur-Heilong	t	jane@gmail.com	2021-09-15 18:55:55.376322	\N	\N
-6	2	Sumatra	t	bean@gmail.com	2021-09-16 17:43:35.638011	2021-09-23	23:34:00
-7	2	Borneo	f	jim@gmail.com	2021-09-16 17:47:49.658448	2021-09-18	13:47:00
-8	2	India	t	bob@gmail.com	2021-09-16 17:52:43.820944	2021-09-24	12:54:00
-9	3	Colorado	f	farrah@gmail.com	2021-09-16 22:26:14.197971	2021-09-20	05:26:00
-10	3	Colorado	f	farrah@gmail.com	2021-09-16 22:26:16.964813	2021-09-20	05:26:00
+11	4	Kruger National Park	t	lin@gmail.com	2021-09-16 22:58:51.014648	2021-09-20	18:57:00
+12	1	Russia	t	hailey@gmail.com	2021-09-17 02:01:30.456369	2021-07-08	21:00:00
+13	3	Colorado  	f	farrah@gmail.com	2021-09-17 02:03:18.821525	2021-07-13	11:57:00
+14	2	India	t	bobby@gmail.com	2021-09-17 02:04:14.829721	2021-06-25	16:34:00
+15	5	Pakistan	f	don@gmail.com	2021-09-17 02:06:18.856811	2021-05-14	21:10:00
 \.
 
 
@@ -194,14 +193,14 @@ COPY public.species (id, animal_name, scientific_name, number_estimated_living_i
 -- Name: individuals_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.individuals_id_seq', 10, true);
+SELECT pg_catalog.setval('public.individuals_id_seq', 12, true);
 
 
 --
 -- Name: sightings_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.sightings_id_seq', 10, true);
+SELECT pg_catalog.setval('public.sightings_id_seq', 15, true);
 
 
 --
