@@ -25,8 +25,18 @@ INSERT INTO Individuals (species_id, nickname) VALUES (2, 'Bean');
 
 INSERT INTO Individuals (species_id, nickname) VALUES (2, 'Rudolph');
 
+INSERT INTO Individuals (species_id, nickname) VALUES (4, 'Aneesha');
+
 INSERT INTO Species (Animal_Name, Scientific_Name, Number_Estimated_Living_in_the_Wild, Conservation_Status_Code, wikipedia_url, image_url) VALUES ('African Wild Dogs', 'Pongo pygmaeus', '104700', 'CR', 'https://en.wikipedia.org/wiki/Orangutan', 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRbrSs6pOJITs5a5sR8jc5inlz2QHpNAkUKJQ&usqp=CAU');
  
  //syntax SELECT column_name(s) FROM table1 LEFT JOIN table2 ON table1.column_name = table2.column_name;
 
  SELECT sightings.individual_id, individuals.nickname, sightings.healthy, sightings.location, sightings.date, sightings.time, sightings.email FROM individuals JOIN sightings ON individuals.id=sightings.individual_id;
+
+ INSERT INTO species (animal_name, scientific_name,  Number_Estimated_Living_in_the_Wild, Conservation_Status_Code, wikipedia_url, image_url) VALUES ('Indus River dolphins', 'Platanista minor', 1816, 'EN', 'https://en.wikipedia.org/wiki/Indus_river_dolphin','https://www.scidev.net/asia-pacific/wp-content/uploads/sites/4/2019/09/16.jpg');
+
+ UPDATE individuals 
+ SET record_created='2021-09-15 01:21:28.152542'
+ WHERE id=1;
+
+ DELETE FROM individuals WHERE individuals.individual_id=2;
