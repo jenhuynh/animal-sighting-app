@@ -58,12 +58,13 @@ ALTER SEQUENCE public.individuals_id_seq OWNED BY public.individuals.id;
 
 CREATE TABLE public.sightings (
     id integer NOT NULL,
-    date_and_time timestamp without time zone NOT NULL,
     individual_id integer NOT NULL,
     location text,
     healthy boolean NOT NULL,
     email text,
-    record_created timestamp without time zone DEFAULT now()
+    record_created timestamp without time zone DEFAULT now(),
+    date date,
+    "time" time without time zone
 );
 
 
@@ -149,9 +150,16 @@ ALTER TABLE ONLY public.species ALTER COLUMN id SET DEFAULT nextval('public.spec
 --
 
 COPY public.individuals (id, species_id, nickname, record_created) FROM stdin;
-1	1	Joe	2021-09-15 01:21:28.152542
 2	2	Bean	2021-09-15 01:21:32.471906
 3	2	Rudolph	2021-09-15 01:21:36.763666
+1	1	Joe	2021-09-15 01:21:28.152542
+4	1	Kaleb	2021-09-16 22:16:30.205739
+5	3	Maxime	2021-09-16 22:17:25.136141
+6	3	Sana	2021-09-16 22:18:32.278647
+7	4	Aneesha	2021-09-16 22:19:22.642915
+8	4	Dewey	2021-09-16 22:20:18.920952
+9	5	Marsha	2021-09-16 22:21:09.802499
+10	5	Alvin	2021-09-16 22:22:24.859619
 \.
 
 
@@ -159,7 +167,13 @@ COPY public.individuals (id, species_id, nickname, record_created) FROM stdin;
 -- Data for Name: sightings; Type: TABLE DATA; Schema: public; Owner: -
 --
 
-COPY public.sightings (id, date_and_time, individual_id, location, healthy, email, record_created) FROM stdin;
+COPY public.sightings (id, individual_id, location, healthy, email, record_created, date, "time") FROM stdin;
+2	1	Amur-Heilong	t	jane@gmail.com	2021-09-15 18:55:55.376322	\N	\N
+6	2	Sumatra	t	bean@gmail.com	2021-09-16 17:43:35.638011	2021-09-23	23:34:00
+7	2	Borneo	f	jim@gmail.com	2021-09-16 17:47:49.658448	2021-09-18	13:47:00
+8	2	India	t	bob@gmail.com	2021-09-16 17:52:43.820944	2021-09-24	12:54:00
+9	3	Colorado	f	farrah@gmail.com	2021-09-16 22:26:14.197971	2021-09-20	05:26:00
+10	3	Colorado	f	farrah@gmail.com	2021-09-16 22:26:16.964813	2021-09-20	05:26:00
 \.
 
 
@@ -170,6 +184,9 @@ COPY public.sightings (id, date_and_time, individual_id, location, healthy, emai
 COPY public.species (id, animal_name, scientific_name, number_estimated_living_in_the_wild, conservation_status_code, record_created, wikipedia_url, image_url) FROM stdin;
 1	Amur Leopard	Panthera pardus orientalis	84	CR	2021-09-14 20:00:28.687362	https://en.wikipedia.org/wiki/Amur_leopard	https://www.treehugger.com/thmb/wNDbep7oI5d8oN4rTB4HHfESEu4=/768x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/GettyImages-988253848-f61604dd68324a11ab7a2bc61293f9eb.jpg
 2	Bornean Orangutan	Pongo pygmaeus	104700	CR	2021-09-14 22:55:54.40311	https://en.wikipedia.org/wiki/Orangutan	https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRbrSs6pOJITs5a5sR8jc5inlz2QHpNAkUKJQ&usqp=CAU
+3	Brown Bear	Ursus arctos	110000	LC	2021-09-16 20:40:49.637885	https://en.wikipedia.org/wiki/Brown_bear	https://en.wikipedia.org/wiki/File:2010-kodiak-bear-1.jpg
+4	African Savanna Elephants	Loxodonta africana africana	415000	EN	2021-09-16 20:57:54.777601	https://www.britannica.com/animal/African-savanna-elephant	https://files.worldwildlife.org/wwfcmsprod/images/African_Savanna_Elephant_07.30.2012_Hero/hero_full/822i06jphr_HI_17486.jpg
+5	Indus River dolphins	Platanista minor	1816	EN	2021-09-16 21:01:22.527635	https://en.wikipedia.org/wiki/Indus_river_dolphin	https://www.scidev.net/asia-pacific/wp-content/uploads/sites/4/2019/09/16.jpg
 \.
 
 
@@ -177,21 +194,21 @@ COPY public.species (id, animal_name, scientific_name, number_estimated_living_i
 -- Name: individuals_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.individuals_id_seq', 3, true);
+SELECT pg_catalog.setval('public.individuals_id_seq', 10, true);
 
 
 --
 -- Name: sightings_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.sightings_id_seq', 1, false);
+SELECT pg_catalog.setval('public.sightings_id_seq', 10, true);
 
 
 --
 -- Name: species_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.species_id_seq', 2, true);
+SELECT pg_catalog.setval('public.species_id_seq', 5, true);
 
 
 --
